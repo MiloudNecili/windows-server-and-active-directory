@@ -10,4 +10,4 @@ Get-WindowsFeature Hyper-V
 
 Die Ausgabe bestätigt, dass Hyper-V installiert ist.
 
-![hyper-v-installations-status](../imagesg
+../images/hyper-v-installation-status.png
