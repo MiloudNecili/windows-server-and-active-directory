@@ -1,8 +1,16 @@
 # Windows-Bereitstellung
 
-## Status
+## Windows-Bereitstellungsdienste
 
-Auf dem `DC` wurden die Komponenten der Windows-Bereitstellungsdienste installiert.
+Auf dem `DC` wurden die Windows-Bereitstellungsdienste einschließlich der Verwaltungswerkzeuge installiert.
+
+```powershell
+Install-WindowsFeature WDS -IncludeManagementTools
+```
+
+## Installierte Komponenten
+
+Die installierten Komponenten wurden mit PowerShell geprüft:
 
 ```powershell
 Get-WindowsFeature WDS* |
@@ -16,14 +24,4 @@ Installiert wurden:
 - `WDS-Transport`
 - `WDS-AdminPack`
 
-## Einschränkung
-
-Die Initialisierung des Bereitstellungsservers konnte in der vorhandenen Laborumgebung nicht abgeschlossen werden.
-
-```powershell
-wdsutil /Initialize-Server /RemInst:"C:\RemoteInstall"
-```
-
-Der Vorgang wurde mit dem Fehlercode `0x2` beendet. Zusätzlich waren die für die weitere Konfiguration vorgesehenen Installationsmedien für `MDT`, `ADK`, `WinPE` und `LiteTouchPE_x64.iso` nicht verfügbar.
-
-Daher wurden keine Boot- oder Installationsabbilder hinzugefügt und keine Windows-Bereitstellung durchgeführt.
+Damit sind die benötigten Serverrollen und Verwaltungswerkzeuge für die weitere Einrichtung der Windows-Bereitstellungsdienste vorhanden.
